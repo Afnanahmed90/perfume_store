@@ -1,0 +1,38 @@
+<h1>All the stores</h1>
+
+ <%if current_user.email == "masrahiafnan@gmail.com"%>
+
+<%= link_to "Add a store", stores_new_path, { :class => "button waves-effect waves-light btn" } %>
+<br><br>
+<%end%>
+
+<table class="striped bordered">
+  <tr>
+    <th>Store</th>
+    <th>Image</th>
+ <%if current_user.email == "masrahiafnan@gmail.com"%>
+
+    <th>Edit</th>
+    <th>Delete</th>
+
+<%end%>
+  </tr>
+
+  <% @stores.each do |store| %>
+      <tr>
+        <td><%= link_to store.name, store_path(store) %></td>
+        <td><%= image_tag(store.img, size: "100x100", alt: "store Image") %></td>
+        <%if current_user.email == "masrahiafnan@gmail.com"%>
+        <td><a class="btn-floating btn-large red" href="<%= edit_store_path(store) %>" >
+      				<i class="large material-icons">mode_edit</i>
+    			</a>
+    	  </td>
+ 
+<td> 
+           <%= button_to "Delete", store_path(store.id), method: :delete,
+              data: { confirm: "Are you sure?" } %>
+              </td>
+              <%end%>
+      </tr>
+  <% end %>
+</table>

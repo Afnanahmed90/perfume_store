@@ -1,0 +1,22 @@
+<%= form_for @info do |f| %>
+  <%= f.hidden_field :store_id, :value => @store.id %>
+  <div class="input-field col s6">
+  	<%= f.label :img, 'img' %>
+  	<%= f.text_field :img %>
+  </div>
+
+  <div class="input-field col s6">
+  	<%= f.label :description, 'description' %>
+  	<%= f.text_field :description %>
+  </div>
+
+  <div class="input-field col s6">
+  	<%= f.label :price, 'price' %>
+  	<%= f.text_field :price %>
+  </div>
+
+  <%= f.submit "Submit", :class => "btn waves-effect waves-light" %>
+<% end %>
+
+
+
