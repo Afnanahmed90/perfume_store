@@ -1,3 +1,17 @@
+<div class = "container-fluid" style="background-color: black;">
+<ul class="nav nav-pills nav-justified">
+  <li class="nav-item">
+    <a class="nav-link active" href="/">Muse</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/artists/new">Create New Artist</a>
+  </li>
+
+ 
+</ul>
+</div>
+
+
 <h1>All the stores</h1>
 
  <%if current_user.email == "masrahiafnan@gmail.com"%>
@@ -5,10 +19,11 @@
 <%= link_to "Add a store", stores_new_path, { :class => "button waves-effect waves-light btn" } %>
 <br><br>
 <%end%>
+ <div class = "container">
 
-<table class="striped bordered">
+<table class="striped bordered  table-hover display-3 text-center " >
   <tr>
-    <th>Store</th>
+    <th class=changeColor>Store</th>
     <th>Image</th>
  <%if current_user.email == "masrahiafnan@gmail.com"%>
 
@@ -24,11 +39,12 @@
         <td><%= image_tag(store.img, size: "100x100", alt: "store Image") %></td>
         <%if current_user.email == "masrahiafnan@gmail.com"%>
         <td><a class="btn-floating btn-large red" href="<%= edit_store_path(store) %>" >
-      				<i class="large material-icons">mode_edit</i>
+      				<i class="glyphicon glyphicon-edit"> </i>
     			</a>
     	  </td>
  
 <td> 
+
            <%= button_to "Delete", store_path(store.id), method: :delete,
               data: { confirm: "Are you sure?" } %>
               </td>
@@ -36,3 +52,4 @@
       </tr>
   <% end %>
 </table>
+</div>
