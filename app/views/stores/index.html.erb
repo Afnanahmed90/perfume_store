@@ -1,55 +1,57 @@
-<div class = "container-fluid" style="background-color: black;">
-<ul class="nav nav-pills nav-justified">
-  <li class="nav-item">
-    <a class="nav-link active" href="/">Muse</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/artists/new">Create New Artist</a>
-  </li>
 
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <%= image_tag("1.jpg",  class:"d-block img-d", alt:"Second slide",  size: "700x500") %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag("2.jpg", class:" d-block img-d", alt:"First slide", size: "700x500") %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag("3.jpg",  class:"d-block img-d", alt:"Second slide", size: "700x500") %>
+    </div>
+  </div>
  
-</ul>
-</div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 
 
-<h1>All the stores</h1>
-
- <%if current_user.email == "masrahiafnan@gmail.com"%>
-
-<%= link_to "Add a store", stores_new_path, { :class => "button waves-effect waves-light btn" } %>
-<br><br>
-<%end%>
- <div class = "container">
-
-<table class="striped bordered  table-hover display-3 text-center " >
-  <tr>
-    <th class=changeColor>Store</th>
-    <th>Image</th>
- <%if current_user.email == "masrahiafnan@gmail.com"%>
-
-    <th>Edit</th>
-    <th>Delete</th>
-
-<%end%>
-  </tr>
-
+<div class="row mt-4">
+  <div class="col-lg-3 ">
   <% @stores.each do |store| %>
-      <tr>
-        <td><%= link_to store.name, store_path(store) %></td>
-        <td><%= image_tag(store.img, size: "100x100", alt: "store Image") %></td>
-        <%if current_user.email == "masrahiafnan@gmail.com"%>
-        <td><a class="btn-floating btn-large red" href="<%= edit_store_path(store) %>" >
-      				<i class="glyphicon glyphicon-edit"> </i>
-    			</a>
-    	  </td>
- 
-<td> 
+  <%if current_user.email == "masrahiafnan@gmail.com"%>
+    <div class="card">
+    <%= image_tag(store.img, size: "200x200", alt: "store Image", class:"card-img-top") %>
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to store.name, store_path(store) %></h5>
+         </div>
+        <div class="footer text-center">
+         <%= link_to "Edit", edit_store_path(store), class:"btn btn-secondary btn-lg" %>
+        <%= link_to "Delete", store_path(store.id), method: :delete,
+              data: { confirm: "Are you sure?" }, class:"btn btn-secondary btn-lg" %>
+        </div>
+   <%else%>
+    <div class="card">
+    <%= image_tag(store.img, size: "200x200", alt: "store Image", class:"card-img-top") %>
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to store.name, store_path(store) %></h5>
+         </div>
 
-           <%= button_to "Delete", store_path(store.id), method: :delete,
-              data: { confirm: "Are you sure?" } %>
-              </td>
-              <%end%>
-      </tr>
-  <% end %>
-</table>
-</div>
+   <%end%>
+
+    <%end%>
+    </div>
+  </div>
+ </div>
+  </div> 

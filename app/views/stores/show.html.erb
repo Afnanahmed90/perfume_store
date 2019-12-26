@@ -1,18 +1,18 @@
  <h1><%= @store.name %> Info</h1>
   <%= link_to "New Info", new_info_path(:store_id => @store.id), { :class => "button waves-effect waves-light btn" } %>
-  <br><br>
-
-  <div class="row">
-    <% @infos.each do |info| %>
-
-        <div class="card-panel grey lighten-2 col s4" style="margin: 10px">
-          <%= image_tag(info.img, size: "100x100", alt: "Artist Image") %>
-          <br>
-          <em><%= info.price %></em>
-          <em><%= info.description %></em>
-
-
-<%= link_to "New info", new_info_path(:store_id => @store.id), { :class => "button waves-effect waves-light btn" } %>
+  
+<div class="row mt-4">
+  <div class="col-lg-4">
+      <% @infos.each do |info| %>
+      <div class="card">
+          <%= image_tag(info.img, size: "200x200", alt: "store Image", class:"card-img-top") %>
+        <div class="card-body">
+          <h5 calss="card-text"> <em>Price:  <%= info.price %></em></h5>
+          <h5 calss="card-text"> 
+            <em>Information: <%= info.description %></em></h5>
+          </div>
         </div>
-    <% end %>
+          <%end%>
   </div>
+</div>
+  

@@ -6,8 +6,9 @@ gem 'devise'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
-gem 'bootstrap-sass', '~> 3.3.6'  #bootstrap
-gem 'bootstrap', '~> 4.4.1'
+
+gem 'bootstrap-sass', '~> 3.4.1'
+gem 'sassc-rails', '>= 2.1.0'
 
 # Use mysql as the database for Active Record
 gem 'jquery-rails' #bootstrap
